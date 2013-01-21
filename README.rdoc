@@ -1,4 +1,6 @@
-# uDrunk backend
+Drunk backend
 
 Web backend to power the uDrunk app.
 Users can login with their credentials and track their alcohol consumption and compare it with their friends.
+
+http://udrunk.herokuapp.com/
