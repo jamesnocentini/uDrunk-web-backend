@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<b>Username:</b>
+		<% if current_user %>
+		  Logged in as <%= current_user.username %>.
+		<% end %>
+</p>
+
+<h2>Comments</h2>
+<% current_user.measures.each do |measure| %>
+
+	<p>
+	    <b>Reading:</b>
+	    <%= measure.reading %>
+	  </p>
+
+
+	<% end %>
+	
+	<h2>Add a comment:</h2>
+	<%= form_for([current_user, current_user.measures.build]) do |f| %>
+	  <div class="field">
+	    <%= f.label :reading %><br />
+	    <%= f.text_field :reading %>
+	  </div>
+
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+	
+	<%= link_to "My Measures", 'measures/index' %>

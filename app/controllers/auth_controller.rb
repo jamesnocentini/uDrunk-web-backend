@@ -5,7 +5,7 @@ class AuthController < ApplicationController
     @user = login(params[:username], params[:password])
     if @user
       
-      ttl = params[:ttl].blank? ? 600 : params[:ttl].to_i
+      ttl = params[:ttl].blank? ? 6000 : params[:ttl].to_i
       
       @user.regenerate_auth_token!(ttl.seconds.from_now) if @user.auth_token_expired?
       

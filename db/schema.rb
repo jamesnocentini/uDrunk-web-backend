@@ -11,15 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104172124) do
+ActiveRecord::Schema.define(:version => 20130102184911) do
+
+  create_table "measures", :force => true do |t|
+    t.integer  "reading"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "measures", ["user_id"], :name => "index_measures_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",              :null => false
-    t.string   "email"
+    t.string   "username",                              :null => false
+    t.string   "email",                 :default => "", :null => false
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "auth_token"
     t.datetime "auth_token_expires_at"
   end
